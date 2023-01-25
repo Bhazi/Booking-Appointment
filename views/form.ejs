@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/elements.css" />
+    <title>Item Lister</title>
+  </head>
+  <body>
+    <h1 style="margin: 16px 25px; color: rgb(197, 67, 67)">Appointment App</h1>
+    <hr />
+    <div>
+      <form action="/" id="addForm" method="POST">
+        <label style="margin-left: 25px">Name</label>
+        <input type="text" name="name" id="name" />
+        <label style="margin-left: 12px">Phone no</label>
+        <input type="tel" name="phoneNo" id="phoneNo" />
+        <label style="margin-left: 12px">Mail Id</label>
+        <input type="mail" name="mailId" id="mailId" />
+        <button type="submit" id="opop" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+    <hr />
+    <main>
+      <% if (values.length > 0) { %> <% for (let val of values) { %>
+      <div id="appointments">
+        <label><%= (val.name).toUpperCase() %></label>
+        <laebl><%= val.email %></laebl>
+        <label><%= val.phoneNo %></label>
+        <form action="/delete" method="POST">
+          <input
+            id="delete"
+            class="btn btn-sm btn-danger"
+            type="submit"
+            value="Delete"
+          />
+          <input type="hidden" value="<%= val.id %>" name="id" />
+        </form>
+      </div>
+      <% } %> <% } else { %>
+      <h3>No appointments</h3>
+      <% } %>
+    </main>
+  </body>
+</html>
